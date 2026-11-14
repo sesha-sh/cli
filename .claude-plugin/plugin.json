@@ -1,0 +1,19 @@
+{
+  "name": "seshat",
+  "version": "0.8.0",
+  "description": "Publish, verify and update shareable artifacts with Seshat.",
+  "author": {
+    "name": "Seshat",
+    "email": "info@seshat.sh",
+    "url": "https://seshat.sh"
+  },
+  "homepage": "https://seshat.sh",
+  "repository": "https://github.com/seshat-sh/cli",
+  "license": "MIT",
+  "keywords": [
+    "artifacts",
+    "sharing",
+    "agents",
+    "publishing"
+  ]
+}

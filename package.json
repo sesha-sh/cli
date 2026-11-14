@@ -1,0 +1,37 @@
+{
+  "name": "@seshat.sh/cli",
+  "version": "0.8.0",
+  "description": "Publish and share artifacts with Seshat from terminals and agents.",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://seshat.sh",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "seshat": "dist/cli.js"
+  },
+  "files": [
+    "dist/**/*.js",
+    "skills/seshat/**",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "@napi-rs/keyring": "2.1.2",
+    "zod": "4.6.7",
+    "string-width": "8.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seshat-sh/cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/seshat-sh/cli/issues"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "seshat",
+  "description": "Seshat artifact publishing for agents",
+  "owner": {
+    "name": "Seshat",
+    "email": "info@seshat.sh",
+    "url": "https://seshat.sh"
+  },
+  "plugins": [
+    {
+      "name": "seshat",
+      "source": "./",
+      "description": "Publish, verify and update shareable artifacts with Seshat."
+    }
+  ]
+}
