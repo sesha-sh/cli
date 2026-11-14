@@ -1,6 +1,6 @@
 {
   "name": "seshat",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Publish, verify and update shareable artifacts with Seshat.",
   "author": {
     "name": "Seshat",

@@ -1,6 +1,6 @@
 {
   "name": "@seshat.sh/cli",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Publish and share artifacts with Seshat from terminals and agents.",
   "type": "module",
   "license": "MIT",

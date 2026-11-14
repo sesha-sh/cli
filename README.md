@@ -2,7 +2,7 @@
 
 [Documentation](https://seshat.sh/docs) · [CLI reference](https://seshat.sh/docs/cli) · [MCP setup](https://seshat.sh/docs/mcp)
 
-Publish HTML, Markdown, images, PDF, JSON, and other artifacts to your space on [Seshat](https://seshat.sh). Node.js 22 or newer is required. Seshat is an invite-only hosted service; no server clone or Cloudflare account is needed.
+Publish HTML, Markdown, images, PDF, JSON, and other artifacts to your space on [Seshat](https://seshat.sh). Node.js 22 or newer is required. Seshat is a hosted service with free public signup; no server clone or Cloudflare account is needed.
 
 ```sh
 npx @seshat.sh/cli login
@@ -137,7 +137,7 @@ Use the current `revision` returned by `get`; keep the request ID and content un
 
 Free retains three versions including the current file. Personal has no version-count cap within its storage allowance. Older versions can be unpublished and republished; their bytes still count toward storage. Deleting an older version is permanent and requires delete permission. The current version cannot be unpublished or deleted on its own. The viewer's version picker is on by default; hiding it removes browsing, while existing pinned links still work unless that version is unpublished or deleted. Password and expiration rules apply to every version. CLI 0.8.0 publishes folder batches as atomic revisions. Unchanged assets share stored content; a failed batch keeps the previous folder unchanged. Restore a complete revision with `seshat artifacts restore ID --target-revision OLD --revision CURRENT --request-id STABLE_ID`. Current sharing settings are preserved; restores that remove paths also require delete permission.
 
-MCP exposes `seshat_list_versions`, `seshat_replace_file`, `seshat_set_version_visibility` and `seshat_delete_version`. File paths must remain within the configured upload roots.
+MCP exposes `seshat_list_versions`, `seshat_replace_file`, `seshat_set_version_visibility`, `seshat_restore_version` and `seshat_delete_version`. File paths must remain within the configured upload roots.
 
 
 ## Artifact activity
