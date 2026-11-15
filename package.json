@@ -1,19 +1,20 @@
 {
-  "name": "@seshat.sh/cli",
-  "version": "0.8.1",
-  "description": "Publish and share artifacts with Seshat from terminals and agents.",
+  "name": "@sesha.sh/cli",
+  "version": "0.9.0",
+  "description": "Publish and share artifacts with Sesha from terminals and agents.",
   "type": "module",
   "license": "MIT",
-  "homepage": "https://seshat.sh",
+  "homepage": "https://sesha.sh",
   "engines": {
     "node": ">=22"
   },
   "bin": {
+    "sesha": "dist/cli.js",
     "seshat": "dist/cli.js"
   },
   "files": [
     "dist/**/*.js",
-    "skills/seshat/**",
+    "skills/sesha/**",
     "README.md",
     "LICENSE"
   ],
@@ -29,9 +30,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/seshat-sh/cli.git"
+    "url": "git+https://github.com/sesha-sh/cli.git"
   },
   "bugs": {
-    "url": "https://github.com/seshat-sh/cli/issues"
+    "url": "https://github.com/sesha-sh/cli/issues"
   }
 }

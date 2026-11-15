@@ -1,16 +1,16 @@
 {
-  "name": "seshat",
-  "description": "Seshat artifact publishing for agents",
+  "name": "sesha",
+  "description": "Sesha artifact publishing for agents",
   "owner": {
-    "name": "Seshat",
-    "email": "info@seshat.sh",
-    "url": "https://seshat.sh"
+    "name": "Sesha",
+    "email": "info@sesha.sh",
+    "url": "https://sesha.sh"
   },
   "plugins": [
     {
-      "name": "seshat",
+      "name": "sesha",
       "source": "./",
-      "description": "Publish, verify and update shareable artifacts with Seshat."
+      "description": "Publish, verify and update shareable artifacts with Sesha."
     }
   ]
 }

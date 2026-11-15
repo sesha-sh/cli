@@ -1,8 +1,8 @@
 {
-  "name": "seshat",
+  "name": "sesha",
   "plugins": [
     {
-      "name": "seshat",
+      "name": "sesha",
       "source": {
         "source": "local",
         "path": "./"

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Seshat"
-  short_description: "Publish and update shareable artifacts with Seshat"
-  default_prompt: "Use $seshat to publish this artifact and return its verified share link."

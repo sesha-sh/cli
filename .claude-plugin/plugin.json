@@ -1,14 +1,14 @@
 {
-  "name": "seshat",
-  "version": "0.8.2",
-  "description": "Publish, verify and update shareable artifacts with Seshat.",
+  "name": "sesha",
+  "version": "0.9.0",
+  "description": "Publish, verify and update shareable artifacts with Sesha.",
   "author": {
-    "name": "Seshat",
-    "email": "info@seshat.sh",
-    "url": "https://seshat.sh"
+    "name": "Sesha",
+    "email": "info@sesha.sh",
+    "url": "https://sesha.sh"
   },
-  "homepage": "https://seshat.sh",
-  "repository": "https://github.com/seshat-sh/cli",
+  "homepage": "https://sesha.sh",
+  "repository": "https://github.com/sesha-sh/cli",
   "license": "MIT",
   "keywords": [
     "artifacts",
