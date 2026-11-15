@@ -176,6 +176,8 @@ Use `sesha artifacts files FOLDER_ID --profile my-agent --json` to inspect folde
 
 ## Upgrading from Seshat
 
+Follow the [existing-installation migration guide](https://sesha.sh/docs/migrate-from-seshat) for global installs, skills, MCP and CI. Keep working profiles and verify the same space before retiring any local installation.
+
 Sesha is the new name for Seshat. Install `@sesha.sh/cli@0.9.0` and use `sesha`; the `seshat` executable remains an alias. Existing profiles and OS credentials are read automatically, and Sesha saves future changes in its own configuration directory. Existing tokens and links remain valid. `SESHA_*` environment variables take precedence; their `SESHAT_*` predecessors remain supported. Stored credentials stay bound to the endpoint you approved.
 
 ## Agent skills and plugins
