@@ -1,6 +1,6 @@
 # CLI workflows
 
-Replace `my-agent` with the user's chosen profile. `npx @seshat.sh/cli` can replace `seshat`. Commands here need the CLI release that includes this skill.
+Replace `my-agent` with the user's chosen profile. `npx @seshat.sh/cli@0.8.1` can replace `seshat`. Commands here need the CLI release that includes this skill.
 
 ## Connect and inspect
 

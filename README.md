@@ -5,18 +5,18 @@
 Publish HTML, Markdown, images, PDF, JSON, and other artifacts to your space on [Seshat](https://seshat.sh). Node.js 22 or newer is required. Seshat is a hosted service with free public signup; no server clone or Cloudflare account is needed.
 
 ```sh
-npx @seshat.sh/cli login
-npx @seshat.sh/cli upload report.html
+npx @seshat.sh/cli@0.8.1 login
+npx @seshat.sh/cli@0.8.1 upload report.html
 ```
 
 With pnpm:
 
 ```sh
-pnpx @seshat.sh/cli login
-pnpx @seshat.sh/cli upload report.html --title "Weekly report"
+pnpx @seshat.sh/cli@0.8.1 login
+pnpx @seshat.sh/cli@0.8.1 upload report.html --title "Weekly report"
 ```
 
-Or install once with `npm install --global @seshat.sh/cli`, then run `seshat`.
+Or install once with `npm install --global @seshat.sh/cli@0.8.1`, then run `seshat`.
 
 ## Connect a terminal
 
@@ -99,7 +99,7 @@ Assistants such as Claude Code, Claude Desktop, Cursor and Codex can publish to 
 
 ```sh
 seshat agent setup --profile my-agent
-claude mcp add --env SESHAT_PROFILE=my-agent --transport stdio seshat -- npx -y @seshat.sh/cli mcp
+claude mcp add --env SESHAT_PROFILE=my-agent --transport stdio seshat -- npx -y @seshat.sh/cli@0.8.1 mcp
 ```
 
 For Claude Desktop or Cursor, add the same command to the assistant's MCP settings file:
@@ -109,7 +109,7 @@ For Claude Desktop or Cursor, add the same command to the assistant's MCP settin
   "mcpServers": {
     "seshat": {
       "command": "npx",
-      "args": ["-y", "@seshat.sh/cli", "mcp"],
+      "args": ["-y", "@seshat.sh/cli@0.8.1", "mcp"],
       "env": { "SESHAT_PROFILE": "my-agent" }
     }
   }
@@ -128,9 +128,9 @@ New terminal and agent connections report their device category, OS, and model w
 When revising an artifact you already uploaded, keep its ID and replace its content rather than creating a new artifact:
 
 ```sh
-npx @seshat.sh/cli artifacts get ARTIFACT_ID --json
-npx @seshat.sh/cli artifacts replace ARTIFACT_ID --file report.html --revision 1 --request-id revision-2-attempt --json
-npx @seshat.sh/cli artifacts versions ARTIFACT_ID --json
+npx @seshat.sh/cli@0.8.1 artifacts get ARTIFACT_ID --json
+npx @seshat.sh/cli@0.8.1 artifacts replace ARTIFACT_ID --file report.html --revision 1 --request-id revision-2-attempt --json
+npx @seshat.sh/cli@0.8.1 artifacts versions ARTIFACT_ID --json
 ```
 
 Use the current `revision` returned by `get`; keep the request ID and content unchanged when retrying. A revision conflict means someone updated the artifact: read it again before deciding to replace it. Agents need both `artifacts:read` and `artifacts:write` for this workflow. The latest content stays at `/a/ID`; a retained version is linked as `/a/ID?version=N`.
@@ -145,13 +145,13 @@ MCP exposes `seshat_list_versions`, `seshat_replace_file`, `seshat_set_version_v
 The private activity feed records uploads, replacements, settings changes, version publication/deletion, folder edits and requested AI metadata generation. View it in artifact settings or run:
 
 ```sh
-npx @seshat.sh/cli artifacts activity ARTIFACT_ID
-npx @seshat.sh/cli artifacts activity ARTIFACT_ID --json
+npx @seshat.sh/cli@0.8.1 artifacts activity ARTIFACT_ID
+npx @seshat.sh/cli@0.8.1 artifacts activity ARTIFACT_ID --json
 ```
 
 The API is `GET /v1/artifacts/:id/activity?limit=25&cursor=...`; MCP exposes `seshat_list_activity`. Both require `artifacts:read` in the same space, including when reading a deleted artifact's retained activity. Public share links never include activity or actor identities.
 
-Browser actions identify the signed-in person. Named agent and terminal connections identify the credential used and the person who authorized it; generic API tokens remain labeled as tokens. Give each agent a separate connection, for example `npx @seshat.sh/cli agent setup --profile codex --name "Codex" --scopes artifacts:read,artifacts:write`. Shared credentials cannot distinguish programs or prove a particular model executed an action.
+Browser actions identify the signed-in person. Named agent and terminal connections identify the credential used and the person who authorized it; generic API tokens remain labeled as tokens. Give each agent a separate connection, for example `npx @seshat.sh/cli@0.8.1 agent setup --profile codex --name "Codex" --scopes artifacts:read,artifacts:write`. Shared credentials cannot distinguish programs or prove a particular model executed an action.
 
 Activity keeps names as they were at the time, even after a connection is renamed or revoked. It stores changed field names, not password values or file contents. Tracking starts when this feature is deployed; earlier operations are not reconstructed. Activity remains with the artifact, including its deletion record, and is removed when its space/account is deleted. Visitor analytics are separate from this change history.
 
@@ -176,12 +176,14 @@ Use `seshat artifacts files FOLDER_ID --profile my-agent --json` to inspect fold
 
 ## Agent skills and plugins
 
+Plugin 0.8.2 bundles CLI 0.8.1.
+
 This public distribution contains the MIT CLI release, the canonical Seshat skill and plugin manifests. The Seshat application remains private. Bundles are built in the application release pipeline; this repository distributes those reviewed outputs.
 
 Install the skill for your selected agent:
 
 ```sh
-npx skills add seshat-sh/cli --skill seshat --agent codex
+npx skills@1.8.1 add seshat-sh/cli --skill seshat --agent codex
 # Or choose --agent claude-code
 ```
 

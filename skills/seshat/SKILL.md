@@ -12,7 +12,7 @@ Give finished work a durable share link. Publish the files the user intends to s
 
 Use connected Seshat MCP tools only when their configured profile and space are verified as the intended destination. Read `seshat://guide` for that server's current contract. A profile mentioned in chat does not switch an MCP server. If MCP points at another or unverified space, use the CLI with the intended explicit profile instead; never publish there just because the tools are connected.
 
-Otherwise use the Seshat CLI, installed as `seshat` or run with `npx @seshat.sh/cli`. Read [CLI workflows](references/cli.md) for command examples.
+Otherwise use the Seshat CLI, installed as `seshat` or run with `npx @seshat.sh/cli@0.8.1`. Read [CLI workflows](references/cli.md) for command examples.
 
 Use the user's dedicated profile explicitly with `--profile NAME --json`. Confirm its space and scopes with `auth status` or `whoami` before the first publication in a session. Honor an already verified session connection. Profiles are credentials, not separate spaces. A marketing/demo profile is only for requested demo work. If authentication fails, report it; keep the selected profile rather than falling back to another account.
 
