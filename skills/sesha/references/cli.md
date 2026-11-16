@@ -1,6 +1,6 @@
 # CLI workflows
 
-Replace `my-agent` with the user's chosen profile. `npx @sesha.sh/cli@0.9.0` can replace `sesha`. Commands here need the CLI release that includes this skill.
+Replace `my-agent` with the user's chosen profile. Use `sesha update check --json` to compare your installed CLI with the current public bundle. Commands here need the CLI release that includes this skill.
 
 ## Connect and inspect
 

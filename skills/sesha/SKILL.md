@@ -8,11 +8,15 @@ description: Publish and update finished reports, documents, visualizations, ima
 
 Give finished work a durable share link. Publish the files the user intends to share; keep credentials, working notes and unrelated source files local. A publication request or existing automatic-publication instruction supplies authorization. Installing this skill alone does not.
 
+## Check the client
+
+Once per session, run `sesha update check --json` or call `sesha_check_updates` when available. Report `update_available` and the supplied update command; ask before installing software. If the command/tool is absent, the client predates update checks: offer `npm install -g github:sesha-sh/cli`. An unavailable check does not block publishing with supported operations. Successful uploads remain successful even when an update notice accompanies them. After an approved update, restart MCP and refresh a separately installed skill using its original installer (`npx skills update` for skills.sh, or the original `sesha skill install` command).
+
 ## Choose the connection
 
 Use connected Sesha MCP tools only when their configured profile and space are verified as the intended destination. Read `sesha://guide` for that server's current contract. A profile mentioned in chat does not switch an MCP server. If MCP points at another or unverified space, use the CLI with the intended explicit profile instead; never publish there just because the tools are connected.
 
-Otherwise use the Sesha CLI, installed as `sesha` or run with `npx @sesha.sh/cli@0.9.0`. Read [CLI workflows](references/cli.md) for command examples.
+Otherwise use the Sesha CLI, installed as `sesha`. The current bundle is available from https://github.com/sesha-sh/cli. Read [CLI workflows](references/cli.md) for command examples.
 
 Use the user's dedicated profile explicitly with `--profile NAME --json`. Confirm its space and scopes with `auth status` or `whoami` before the first publication in a session. Honor an already verified session connection. Profiles are credentials, not separate spaces. A marketing/demo profile is only for requested demo work. If authentication fails, report it; keep the selected profile rather than falling back to another account.
 
