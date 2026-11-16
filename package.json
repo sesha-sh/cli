@@ -1,6 +1,6 @@
 {
   "name": "@sesha.sh/cli",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Publish and share artifacts with Sesha from terminals and agents.",
   "type": "module",
   "license": "MIT",

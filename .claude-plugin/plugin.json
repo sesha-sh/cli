@@ -1,6 +1,6 @@
 {
   "name": "sesha",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Publish, verify and update shareable artifacts with Sesha.",
   "author": {
     "name": "Sesha",
