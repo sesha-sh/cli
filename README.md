@@ -5,18 +5,18 @@
 Publish HTML, Markdown, images, PDF, JSON, and other artifacts to your space on [Sesha](https://sesha.sh). Node.js 22 or newer is required. Sesha is a hosted service with free public signup; no server clone or Cloudflare account is needed.
 
 ```sh
-npx @sesha.sh/cli login
-npx @sesha.sh/cli upload report.html
+npx @sesha.sh/cli@0.11.2 login
+npx @sesha.sh/cli@0.11.2 upload report.html
 ```
 
 With pnpm:
 
 ```sh
-pnpx @sesha.sh/cli login
-pnpx @sesha.sh/cli upload report.html --title "Weekly report"
+pnpx @sesha.sh/cli@0.11.2 login
+pnpx @sesha.sh/cli@0.11.2 upload report.html --title "Weekly report"
 ```
 
-Or install once with `npm install --global @sesha.sh/cli`, then run `sesha`.
+Or install once with `npm install --global @sesha.sh/cli@0.11.2`, then run `sesha`.
 
 ## Updates
 
@@ -124,7 +124,7 @@ Assistants such as Claude Code, Claude Desktop, Cursor and Codex can publish to 
 
 ```sh
 sesha agent setup --profile my-agent
-claude mcp add --env SESHA_PROFILE=my-agent --transport stdio sesha -- npx -y @sesha.sh/cli mcp
+claude mcp add --env SESHA_PROFILE=my-agent --transport stdio sesha -- npx -y @sesha.sh/cli@0.11.2 mcp
 ```
 
 For Claude Desktop or Cursor, add the same command to the assistant's MCP settings file:
@@ -134,7 +134,7 @@ For Claude Desktop or Cursor, add the same command to the assistant's MCP settin
   "mcpServers": {
     "sesha": {
       "command": "npx",
-      "args": ["-y", "@sesha.sh/cli", "mcp"],
+      "args": ["-y", "@sesha.sh/cli@0.11.2", "mcp"],
       "env": { "SESHA_PROFILE": "my-agent" }
     }
   }
@@ -153,9 +153,9 @@ New terminal and agent connections report their device category, OS, and model w
 When revising an artifact you already uploaded, keep its ID and replace its content rather than creating a new artifact:
 
 ```sh
-npx @sesha.sh/cli artifacts get ARTIFACT_ID --json
-npx @sesha.sh/cli artifacts replace ARTIFACT_ID --file report.html --revision 1 --request-id revision-2-attempt --json
-npx @sesha.sh/cli artifacts versions ARTIFACT_ID --json
+npx @sesha.sh/cli@0.11.2 artifacts get ARTIFACT_ID --json
+npx @sesha.sh/cli@0.11.2 artifacts replace ARTIFACT_ID --file report.html --revision 1 --request-id revision-2-attempt --json
+npx @sesha.sh/cli@0.11.2 artifacts versions ARTIFACT_ID --json
 ```
 
 Use the current `revision` returned by `get`; keep the request ID and content unchanged when retrying. A revision conflict means someone updated the artifact: read it again before deciding to replace it. Agents need both `artifacts:read` and `artifacts:write` for this workflow. The latest content stays at `/a/ID`; a retained version is linked as `/a/ID?version=N`.
@@ -180,13 +180,13 @@ Choose one password option. `--protect` generates and returns a fresh password; 
 The private activity feed records uploads, replacements, settings changes, version publication/deletion, folder edits and requested AI metadata generation. View it in artifact settings or run:
 
 ```sh
-npx @sesha.sh/cli artifacts activity ARTIFACT_ID
-npx @sesha.sh/cli artifacts activity ARTIFACT_ID --json
+npx @sesha.sh/cli@0.11.2 artifacts activity ARTIFACT_ID
+npx @sesha.sh/cli@0.11.2 artifacts activity ARTIFACT_ID --json
 ```
 
 The API is `GET /v1/artifacts/:id/activity?limit=25&cursor=...`; MCP exposes `sesha_list_activity`. Both require `artifacts:read` in the same space, including when reading a deleted artifact's retained activity. Public share links never include activity or actor identities.
 
-Browser actions identify the signed-in person. Named agent and terminal connections identify the credential used and the person who authorized it; generic API tokens remain labeled as tokens. Give each agent a separate connection, for example `npx @sesha.sh/cli agent setup --profile codex --name "Codex" --scopes artifacts:read,artifacts:write`. Shared credentials cannot distinguish programs or prove a particular model executed an action.
+Browser actions identify the signed-in person. Named agent and terminal connections identify the credential used and the person who authorized it; generic API tokens remain labeled as tokens. Give each agent a separate connection, for example `npx @sesha.sh/cli@0.11.2 agent setup --profile codex --name "Codex" --scopes artifacts:read,artifacts:write`. Shared credentials cannot distinguish programs or prove a particular model executed an action.
 
 Activity keeps names as they were at the time, even after a connection is renamed or revoked. It stores changed field names, not password values or file contents. Tracking starts when this feature is deployed; earlier operations are not reconstructed. Activity remains with the artifact, including its deletion record, and is removed when its space/account is deleted. Visitor analytics are separate from this change history.
 
@@ -213,7 +213,7 @@ Use `sesha artifacts files FOLDER_ID --profile my-agent --json` to inspect folde
 
 Follow the [existing-installation migration guide](https://sesha.sh/docs/migrate-from-seshat) for global installs, skills, MCP and CI. Keep working profiles and verify the same space before retiring any local installation.
 
-Sesha is the new name for Seshat. Install `@sesha.sh/cli` and use `sesha`; the `seshat` executable remains an alias. Existing profiles and OS credentials are read automatically, and Sesha saves future changes in its own configuration directory. Existing tokens and links remain valid. `SESHA_*` environment variables take precedence; their `SESHAT_*` predecessors remain supported. Stored credentials stay bound to the endpoint you approved.
+Sesha is the new name for Seshat. Install `@sesha.sh/cli@0.11.2` and use `sesha`; the `seshat` executable remains an alias. Existing profiles and OS credentials are read automatically, and Sesha saves future changes in its own configuration directory. Existing tokens and links remain valid. `SESHA_*` environment variables take precedence; their `SESHAT_*` predecessors remain supported. Stored credentials stay bound to the endpoint you approved.
 
 ## Plan limits and agent upgrades
 
@@ -222,3 +222,36 @@ When Personal can resolve a Free-plan refusal, JSON errors include `upgradeEligi
 After confirmation, check the original space with `sesha whoami --profile YOUR_PROFILE --json` or MCP `sesha_get_account`. Retry the original operation once, with its original request ID and unchanged payload, only when that space reports `plan: "pro"`. Preserve successful uploads that skipped optional enrichment.
 
 Personal adds optional embedding, off by default, with space defaults, artifact overrides, and exact website allowlists. MCP exposes `sesha_get_embedding` and `sesha_set_embedding`; ordinary sharing remains available on Free. See [embedding controls](https://sesha.sh/docs/sharing#embed-on-another-website) and the [upgrade walkthrough, including Link wallet compatibility](https://sesha.sh/docs/upgrades).
+
+## Agent skills and plugins
+
+Plugin 0.11.2 bundles CLI 0.11.2.
+
+This public distribution contains the MIT CLI release, the canonical Sesha skill and plugin manifests. The Sesha application remains private. Bundles are built in the application release pipeline; this repository distributes those reviewed outputs.
+
+Install the skill for your selected agent:
+
+```sh
+npx skills@1.8.1 add sesha-sh/cli --skill sesha --agent codex
+# Or choose --agent claude-code
+```
+
+Claude Code marketplace:
+
+```text
+/plugin marketplace add sesha-sh/cli
+/plugin install sesha@sesha
+```
+
+Codex marketplace:
+
+```sh
+codex plugin marketplace add sesha-sh/cli
+codex plugin add sesha@sesha
+```
+
+Start a fresh agent session after installation. This is a skill-only plugin requiring local execution. It does not bundle an MCP connection or run install hooks. Install Node.js 22+ and authorize a dedicated Sesha profile separately using the CLI setup above; never embed tokens in agent prompts or plugin files. With a connected Sesha MCP server, the same skill can use its available tools.
+
+The repository marketplace is immediately installable. Listing in the Claude or OpenAI public directories requires separate publisher submission and review; a valid package does not establish directory acceptance. skills.sh discovery follows skill installs.
+
+CLI, skills and packaging are MIT. The Sesha name and brand artwork are reserved; see assets/NOTICE. Support: https://sesha.sh/contact.
