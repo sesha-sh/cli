@@ -2,6 +2,8 @@
 
 [Documentation](https://sesha.sh/docs) · [CLI reference](https://sesha.sh/docs/cli) · [MCP setup](https://sesha.sh/docs/mcp)
 
+> CLI **0.11.2** is available from GitHub. npm publication is pending authentication; install this release with `npm install -g github:sesha-sh/cli#v0.11.2`. The npm examples below apply once 0.11.2 is published.
+
 Publish HTML, Markdown, images, PDF, JSON, and other artifacts to your space on [Sesha](https://sesha.sh). Node.js 22 or newer is required. Sesha is a hosted service with free public signup; no server clone or Cloudflare account is needed.
 
 ```sh
