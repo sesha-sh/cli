@@ -42,3 +42,16 @@ CLI folder uploads reuse matching small files without transfer, including with u
 Only use `--no-password`, `--protect`, `--no-expiry` or `--expires-at` when the user requests that choice. Existing folder upload flags do not change its sharing settings.
 
 The CLI provides `artifacts delete --dry-run` to inspect a deletion and `--yes` to execute an authorized deletion. Unpublishing a retained file version blocks its public pinned link; deleting a version removes its bytes. Both require an explicit user purpose. Files and folders both support retained revisions. A folder revision includes its complete manifest; unchanged assets share stored content. Free retains three revisions including current; Personal is bounded by storage. Restore with `sesha artifacts restore ARTIFACT_ID --target-revision OLD --revision CURRENT --request-id STABLE_ID --profile my-agent --json`. Restore preserves current protection/expiry. A folder restore that removes current paths also requires delete permission.
+
+## Live events (SEP-3415 · Personal plan)
+
+```sh
+sesha events list --json
+sesha events poll --name artifact.viewed --profile my-agent --json
+sesha events poll --name artifact.viewed --cursor CURSOR --profile my-agent --json
+sesha events watch --name artifact.changed --artifact ARTIFACT_ID --profile my-agent --json
+sesha events subscriptions --profile my-agent --json
+sesha events unsubscribe SUBSCRIPTION_ID --yes --profile my-agent --json
+```
+
+`events list` works offline on any plan. `events poll`, `events watch`, and `events subscriptions` require a Personal plan and `artifacts:read`; on Free spaces, the JSON error includes `code: "upgrade_required"`, `upgradeEligible: true`, and an owner-bound `upgradeUrl` (`feature=events`). Remote and cloud agents can also connect directly to the hosted stateless MCP 2026-07-28 server at `https://app.sesha.sh/mcp` using OAuth 2.1 or a scoped `Authorization: Bearer sesha_...` token.

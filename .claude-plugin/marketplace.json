@@ -10,7 +10,7 @@
     {
       "name": "sesha",
       "source": "./",
-      "description": "Publish, verify and update shareable artifacts with Sesha."
+      "description": "Publish, verify, update, and react to shareable artifacts with Sesha (MCP 2026-07-28 & SEP-3415 events)."
     }
   ]
 }

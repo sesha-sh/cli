@@ -1,4 +1,4 @@
 interface:
   display_name: "Sesha"
-  short_description: "Publish and update shareable artifacts with Sesha"
-  default_prompt: "Use $sesha to publish this artifact and return its verified share link."
+  short_description: "Publish, update, and react to shareable artifacts with Sesha"
+  default_prompt: "Use $sesha to publish this artifact, return its verified share link, or watch artifact events."

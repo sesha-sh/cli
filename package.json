@@ -1,6 +1,6 @@
 {
   "name": "@sesha.sh/cli",
-  "version": "0.11.2",
+  "version": "0.12.0",
   "description": "Publish and share artifacts with Sesha from terminals and agents.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "1.32.2",
+    "@modelcontextprotocol/server": "2.4.0",
     "@napi-rs/keyring": "2.1.2",
     "zod": "4.6.7",
     "string-width": "8.3.0"

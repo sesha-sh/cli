@@ -1,7 +1,7 @@
 {
   "name": "sesha",
-  "version": "0.11.2",
-  "description": "Publish, verify and update shareable artifacts with Sesha.",
+  "version": "0.12.0",
+  "description": "Publish, verify, update, and react to shareable artifacts with Sesha (MCP 2026-07-28 & SEP-3415 events).",
   "author": {
     "name": "Sesha",
     "email": "info@sesha.sh",
@@ -14,6 +14,9 @@
     "artifacts",
     "sharing",
     "agents",
-    "publishing"
+    "publishing",
+    "mcp",
+    "events",
+    "sep-3415"
   ]
 }

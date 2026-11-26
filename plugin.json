@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "sesha",
-  "version": "0.11.2",
-  "description": "Publish, verify and update shareable artifacts with Sesha.",
+  "version": "0.12.0",
+  "description": "Publish, verify, update, and react to shareable artifacts with Sesha (MCP 2026-07-28 & SEP-3415 events).",
   "author": {
     "name": "Sesha",
     "email": "info@sesha.sh",
@@ -15,15 +15,18 @@
     "artifacts",
     "sharing",
     "agents",
-    "publishing"
+    "publishing",
+    "mcp",
+    "events",
+    "sep-3415"
   ],
   "extensions": {
     "com.openai": {
       "requires_local_executor": true,
       "interface": {
         "displayName": "Sesha",
-        "shortDescription": "Publish and share artifacts",
-        "longDescription": "Publish reports, visualizations, documents and related files to a durable share link. Verify uploaded metadata, update existing artifacts and restore retained file or folder revisions. Requires Node.js 22 or newer, the Sesha CLI and a separately authorized Sesha profile. Uploads are public, unlisted links with optional passwords and expiration. Installing this skill does not grant publishing permission or connect an account.",
+        "shortDescription": "Publish, share, and react to artifacts",
+        "longDescription": "Publish reports, visualizations, documents and related files to a durable share link. Verify uploaded metadata, update existing artifacts, restore retained file or folder revisions, and react to live artifact events via MCP SEP-3415 (Personal plan). Works with local stdio MCP, hosted MCP (https://app.sesha.sh/mcp), and the Sesha CLI. Uploads are public, unlisted links with optional passwords and expiration. Installing this skill does not grant publishing permission or connect an account.",
         "developerName": "Sesha",
         "category": "Productivity",
         "capabilities": [
@@ -36,7 +39,8 @@
         "supportURL": "https://sesha.sh/contact",
         "defaultPrompt": [
           "Publish this report to Sesha and verify its share link.",
-          "Update my existing Sesha artifact without changing its link."
+          "Update my existing Sesha artifact without changing its link.",
+          "Watch my Sesha artifact and notify me when a recipient opens it."
         ],
         "brandColor": "#293354",
         "composerIcon": "./assets/icon.svg",
